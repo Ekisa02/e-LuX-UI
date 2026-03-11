@@ -1,0 +1,352 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: #0c0c0c;
+  color: #00ff41;
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff41;
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+
+/* Terminal cursor blink animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Glitch effect for cyberpunk text */
+.glitch {
+  position: relative;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+  opacity: 0.8;
+  color: #ff00ff;
+}
+
+.glitch::after {
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(2px, 2px);
+  opacity: 0.8;
+  color: #00ffff;
+}
+
+@keyframes glitch-anim {
+  0% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+  20% { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); }
+  40% { clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%); }
+  60% { clip-path: polygon(0 65%, 100% 65%, 100% 75%, 0 75%); }
+  80% { clip-path: polygon(0 80%, 100% 80%, 100% 90%, 0 90%); }
+  100% { clip-path: polygon(0 95%, 100% 95%, 100% 100%, 0 100%); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%); }
+  20% { clip-path: polygon(0 70%, 100% 30%, 100% 90%, 0 90%); }
+  40% { clip-path: polygon(0 60%, 100% 40%, 100% 80%, 0 80%); }
+  60% { clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%); }
+  80% { clip-path: polygon(0 40%, 100% 60%, 100% 60%, 0 60%); }
+  100% { clip-path: polygon(0 30%, 100% 70%, 100% 50%, 0 50%); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  10% { transform: skew(0deg); }
+  11% { transform: skew(2deg); }
+  12% { transform: skew(0deg); }
+  80% { transform: skew(0deg); }
+  81% { transform: skew(-2deg); }
+  82% { transform: skew(0deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* Scanline effect */
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #00ff41,
+    transparent
+  );
+  animation: scan 8s linear infinite;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* Matrix rain effect */
+.matrix-bg {
+  position: relative;
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 65, 0.05) 0%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.03) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(0, 0, 0, 0) 2px
+  );
+  pointer-events: none;
+  animation: matrix 20s linear infinite;
+}
+
+@keyframes matrix {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 20px; }
+}
+
+/* Terminal text selection */
+::selection {
+  background: #00ff41;
+  color: #0c0c0c;
+}
+
+::-moz-selection {
+  background: #00ff41;
+  color: #0c0c0c;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid rgba(0, 255, 65, 0.1);
+  border-top-color: #00ff41;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Flicker animation */
+.flicker {
+  animation: flicker 2s linear infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  41.99% { opacity: 1; }
+  42% { opacity: 0; }
+  43% { opacity: 0; }
+  43.01% { opacity: 1; }
+  45.99% { opacity: 1; }
+  46% { opacity: 0; }
+  46.99% { opacity: 0; }
+  47% { opacity: 1; }
+}
+
+/* Cyberpunk border effect */
+.cyber-border {
+  position: relative;
+  border: 1px solid #2a2a2a;
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid #00ff41;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.cyber-border:hover::before {
+  opacity: 0.5;
+}
+
+/* Data stream effect */
+.data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-stream::after {
+  content: '01010101010101010101010101010101010101010101010101010101';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #00ff41;
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.1;
+  white-space: nowrap;
+  animation: stream 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes stream {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Holographic effect */
+.hologram {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 65, 0.1) 0%,
+    rgba(255, 0, 255, 0.1) 50%,
+    rgba(0, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: hologram 5s ease infinite;
+}
+
+@keyframes hologram {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Glow effect */
+.glow {
+  text-shadow: 0 0 10px #00ff41,
+               0 0 20px #00ff41,
+               0 0 30px #00ff41;
+}
+
+.glow-text {
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Neon line effect */
+.neon-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00ff41,
+    #ff00ff,
+    #00ffff,
+    transparent
+  );
+  filter: blur(1px);
+}
+
+/* CRT screen effect */
+.crt {
+  position: relative;
+}
+
+.crt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    rgba(0, 255, 65, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 10px; }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hide-tablet {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+}

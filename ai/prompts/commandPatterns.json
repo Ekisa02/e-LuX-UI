@@ -1,0 +1,98 @@
+{
+  "git": {
+    "patterns": [
+      "git push",
+      "git pull",
+      "git commit",
+      "git status",
+      "git branch",
+      "git merge",
+      "git rebase",
+      "git stash",
+      "git log",
+      "git diff"
+    ],
+    "common_errors": {
+      "not a git repository": "Initialize with: git init",
+      "failed to push": "Pull changes first: git pull",
+      "nothing to commit": "Add files: git add .",
+      "merge conflict": "Resolve conflicts manually then commit"
+    }
+  },
+  "npm": {
+    "patterns": [
+      "npm install",
+      "npm start",
+      "npm run build",
+      "npm test",
+      "npm publish",
+      "npm update",
+      "npm audit"
+    ],
+    "common_errors": {
+      "not found": "Package not installed: npm install <package>",
+      "permission denied": "Use sudo or fix permissions",
+      "missing script": "Check package.json scripts section"
+    }
+  },
+  "docker": {
+    "patterns": [
+      "docker ps",
+      "docker images",
+      "docker run",
+      "docker stop",
+      "docker rm",
+      "docker build",
+      "docker compose"
+    ],
+    "common_errors": {
+      "Cannot connect": "Docker daemon not running",
+      "port is already allocated": "Change port or stop container using it",
+      "No such container": "Container ID incorrect"
+    }
+  },
+  "system": {
+    "patterns": [
+      "ls -la",
+      "cd",
+      "pwd",
+      "cp -r",
+      "mv",
+      "rm -rf",
+      "cat",
+      "grep -r",
+      "find . -name",
+      "chmod",
+      "chown",
+      "ps aux",
+      "kill -9",
+      "df -h",
+      "du -sh"
+    ],
+    "common_errors": {
+      "Permission denied": "Use sudo or check file permissions",
+      "No such file": "File path incorrect",
+      "command not found": "Install required package",
+      "Directory not empty": "Use rm -rf for directories"
+    }
+  },
+  "network": {
+    "patterns": [
+      "ping",
+      "curl",
+      "wget",
+      "ssh",
+      "scp",
+      "netstat",
+      "ifconfig",
+      "ip addr",
+      "nslookup",
+      "traceroute"
+    ],
+    "common_errors": {
+      "Connection refused": "Service not running or port closed",
+      "Network is unreachable": "Check internet connection",
+      "Name or service not known": "DNS resolution failed"
+    }
+  }
+}

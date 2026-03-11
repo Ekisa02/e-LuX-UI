@@ -1,0 +1,430 @@
+/* Terminal Component Styles */
+.terminal-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-dark);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Terminal Tabs */
+.terminal-tabs {
+  display: flex;
+  background: var(--color-panel);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.terminal-tab {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 0.5rem;
+}
+
+.terminal-tab:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--color-primary);
+}
+
+.terminal-tab.active {
+  background: rgba(0, 255, 65, 0.15);
+  color: var(--color-primary);
+}
+
+.terminal-tab-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  color: currentColor;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+.terminal-tab-close:hover {
+  opacity: 1;
+  background: rgba(255, 0, 0, 0.2);
+  color: var(--color-danger);
+}
+
+.terminal-tab-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.terminal-tab-add:hover {
+  background: var(--color-primary);
+  color: var(--color-dark);
+  border-color: var(--color-primary);
+}
+
+/* Terminal Container */
+.terminal-container {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--color-dark);
+  min-height: 0;
+  position: relative;
+}
+
+/* Terminal Controls */
+.terminal-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--color-panel);
+  border-top: 1px solid var(--color-border);
+}
+
+.terminal-control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.terminal-control-btn:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.terminal-control-btn:active {
+  transform: scale(0.95);
+}
+
+.terminal-control-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Terminal Status Bar */
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-panel);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.terminal-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.terminal-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.terminal-status-indicator.online {
+  background: var(--color-primary);
+  animation: pulse 2s infinite;
+}
+
+.terminal-status-indicator.offline {
+  background: var(--color-danger);
+}
+
+/* Terminal Search */
+.terminal-search {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--color-panel);
+  border-bottom: 1px solid var(--color-border);
+  gap: 0.5rem;
+}
+
+.terminal-search-input {
+  flex: 1;
+  background: var(--color-dark);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+}
+
+.terminal-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.terminal-search-count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.terminal-search-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.terminal-search-nav-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.terminal-search-nav-btn:hover:not(:disabled) {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.terminal-search-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Terminal Context Menu */
+.terminal-context-menu {
+  position: fixed;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.25rem 0;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+}
+
+.terminal-context-menu-item {
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-context-menu-item:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--color-primary);
+}
+
+.terminal-context-menu-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0.25rem 0;
+}
+
+/* Terminal Selection */
+.terminal-selection {
+  position: absolute;
+  background: rgba(0, 255, 65, 0.3);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Terminal Hover */
+.terminal-hover {
+  position: absolute;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+/* Terminal Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Terminal Responsive */
+@media (max-width: 768px) {
+  .terminal-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .terminal-tab {
+    flex: 0 0 auto;
+  }
+  
+  .terminal-status {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .terminal-search {
+    flex-wrap: wrap;
+  }
+  
+  .terminal-search-input {
+    width: 100%;
+  }
+}
+
+/* Terminal Print */
+@media print {
+  .terminal-tabs,
+  .terminal-controls,
+  .terminal-status,
+  .terminal-search {
+    display: none;
+  }
+  
+  .terminal-container {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+/* xterm.js customizations */
+.xterm {
+  padding: 0.5rem;
+  font-family: var(--font-primary) !important;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.xterm-viewport {
+  overflow-y: auto !important;
+  background: var(--color-dark) !important;
+}
+
+.xterm-screen {
+  z-index: 1;
+}
+
+.xterm-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.xterm-selection {
+  background: rgba(0, 255, 65, 0.3) !important;
+}
+
+/* Terminal scrollbar */
+.xterm-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.xterm-viewport::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Terminal selection colors */
+.xterm-selection div {
+  background: rgba(0, 255, 65, 0.3) !important;
+}
+
+/* Terminal link styling */
+.xterm-link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--color-info);
+}
+
+.xterm-link:hover {
+  text-decoration: none;
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* Terminal accessibility */
+.terminal-container:focus {
+  outline: none;
+}
+
+.terminal-container:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Terminal high contrast mode */
+@media (prefers-contrast: high) {
+  .terminal-container {
+    border-width: 2px;
+  }
+  
+  .xterm-cursor {
+    border-left: 2px solid var(--color-primary);
+  }
+}

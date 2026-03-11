@@ -1,0 +1,376 @@
+/* Cyberpunk Theme */
+:root {
+  --color-primary: #00ff41;
+  --color-secondary: #0a0a0a;
+  --color-accent: #ff00ff;
+  --color-warning: #ffff00;
+  --color-danger: #ff0000;
+  --color-info: #00ffff;
+  --color-dark: #0c0c0c;
+  --color-panel: #1a1a1a;
+  --color-border: #2a2a2a;
+  
+  --font-primary: 'Fira Code', monospace;
+  --font-cyber: 'Share Tech Mono', monospace;
+  
+  --shadow-glow: 0 0 10px rgba(0, 255, 65, 0.5);
+  --shadow-glow-accent: 0 0 10px rgba(255, 0, 255, 0.5);
+  --shadow-glow-info: 0 0 10px rgba(0, 255, 255, 0.5);
+  
+  --gradient-cyber: linear-gradient(135deg, 
+    rgba(0, 255, 65, 0.2), 
+    rgba(255, 0, 255, 0.2), 
+    rgba(0, 255, 255, 0.2)
+  );
+  
+  --gradient-scan: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 65, 0.3),
+    transparent
+  );
+  
+  --animation-speed: 0.3s;
+  --animation-glitch: 1s;
+  --animation-scan: 8s;
+}
+
+/* Theme-specific component styles */
+.theme-cyberpunk .btn-primary {
+  background: var(--color-primary);
+  color: var(--color-dark);
+  border: none;
+  box-shadow: var(--shadow-glow);
+}
+
+.theme-cyberpunk .btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.theme-cyberpunk .card {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-cyberpunk .card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(--gradient-scan);
+  transform: rotate(45deg);
+  animation: card-scan 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.theme-cyberpunk .card:hover::before {
+  opacity: 0.1;
+}
+
+@keyframes card-scan {
+  0% { transform: rotate(45deg) translateY(-100%); }
+  100% { transform: rotate(45deg) translateY(100%); }
+}
+
+.theme-cyberpunk .terminal {
+  background: var(--color-dark);
+  color: var(--color-primary);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-primary);
+}
+
+.theme-cyberpunk .terminal-cursor {
+  background: var(--color-primary);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.theme-cyberpunk .glitch-text {
+  position: relative;
+  animation: glitch-skew 4s infinite linear alternate-reverse;
+}
+
+.theme-cyberpunk .glitch-text::before,
+.theme-cyberpunk .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-cyberpunk .glitch-text::before {
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+  color: var(--color-accent);
+  z-index: -1;
+}
+
+.theme-cyberpunk .glitch-text::after {
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+  color: var(--color-info);
+  z-index: -2;
+}
+
+.theme-cyberpunk .scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-cyberpunk .scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-scan);
+  animation: scan var(--animation-scan) linear infinite;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+.theme-cyberpunk .matrix-bg {
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 65, 0.05) 0%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+  position: relative;
+}
+
+.theme-cyberpunk .matrix-bg::before {
+  content: '01010101010101010101010101010101010101010101010101010101';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: var(--color-primary);
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.1;
+  white-space: nowrap;
+  animation: matrix 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes matrix {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.theme-cyberpunk .neon-border {
+  border: 1px solid var(--color-primary);
+  box-shadow: 
+    0 0 5px var(--color-primary),
+    inset 0 0 5px var(--color-primary);
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.theme-cyberpunk .hologram {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 65, 0.1) 0%,
+    rgba(255, 0, 255, 0.1) 50%,
+    rgba(0, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: hologram 5s ease infinite;
+}
+
+@keyframes hologram {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.theme-cyberpunk .data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-cyberpunk .data-stream::after {
+  content: '01010101010101010101010101010101010101010101010101010101';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: var(--color-primary);
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.1;
+  white-space: nowrap;
+  animation: stream 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes stream {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.theme-cyberpunk .crt-effect {
+  position: relative;
+}
+
+.theme-cyberpunk .crt-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    rgba(0, 255, 65, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 10px; }
+}
+
+.theme-cyberpunk .glow-text {
+  text-shadow: 
+    0 0 10px var(--color-primary),
+    0 0 20px var(--color-primary),
+    0 0 30px var(--color-primary);
+}
+
+.theme-cyberpunk .glow-box {
+  box-shadow: 
+    0 0 10px var(--color-primary),
+    inset 0 0 10px var(--color-primary);
+}
+
+.theme-cyberpunk .gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent),
+    var(--color-info)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+.theme-cyberpunk .noise-bg {
+  position: relative;
+}
+
+.theme-cyberpunk .noise-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-radial-gradient(
+    circle at 30% 50%,
+    rgba(0, 255, 65, 0.1) 0px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.theme-cyberpunk .vignette {
+  position: relative;
+}
+
+.theme-cyberpunk .vignette::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+.theme-cyberpunk .selection-glow::selection {
+  background: var(--color-primary);
+  color: var(--color-dark);
+  text-shadow: none;
+}
+
+.theme-cyberpunk .scrollbar-cyber::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-cyberpunk .scrollbar-cyber::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+.theme-cyberpunk .scrollbar-cyber::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.theme-cyberpunk .scrollbar-cyber::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.theme-cyberpunk .scrollbar-cyber::-webkit-scrollbar-corner {
+  background: var(--color-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theme-cyberpunk .card::before {
+    animation: none;
+  }
+  
+  .theme-cyberpunk .matrix-bg::before {
+    font-size: 6px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .theme-cyberpunk *,
+  .theme-cyberpunk *::before,
+  .theme-cyberpunk *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
